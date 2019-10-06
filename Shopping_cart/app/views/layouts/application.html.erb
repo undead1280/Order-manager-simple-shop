@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>N456</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <%= stylesheet_link_tag    'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <% if user_signed_in?%>
+      <ul class="nav">
+        <li class="nav-item">
+          <%= link_to 'New', new_product_path, :class => 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Home', home_path, :class => 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Order list', cart_path, :class => 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Log out', destroy_user_session_path, method: :delete , :class => 'nav-link' %>
+        </li>
+      </ul>
+    <% else %>
+    <ul class="nav">
+        <li class="nav-item">
+          <%= link_to 'Sign in', new_user_session_path, :class => 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Sign up', new_user_registration_path, :class => 'nav-link' %>
+        </li>
+      </ul>
+    <%end%>
+  
+  
+  
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+    <%= yield %>
+  </body>
+</html>
